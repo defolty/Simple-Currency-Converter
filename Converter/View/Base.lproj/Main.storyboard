@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8L-KI-2hh" userLabel="Upper View">
-                                <rect key="frame" x="20" y="338" width="374" height="80"/>
+                                <rect key="frame" x="20" y="345" width="374" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Va-BQ-uCK" userLabel="Button &amp; TextField">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
@@ -95,7 +95,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2f-eg-DE3" userLabel="Bottom View">
-                                <rect key="frame" x="20" y="478" width="374" height="80"/>
+                                <rect key="frame" x="20" y="471" width="374" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMZ-qF-xbu" userLabel="Button &amp; Textfield">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
@@ -146,7 +146,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ms-hf-96h">
-                                <rect key="frame" x="207" y="593" width="0.0" height="0.0"/>
+                                <rect key="frame" x="207" y="561" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -161,11 +161,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iiY-Ah-ThM" secondAttribute="trailing" constant="20" id="IpY-Il-DoE"/>
                             <constraint firstItem="S8L-KI-2hh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z2P-8S-m99"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S8L-KI-2hh" secondAttribute="trailing" constant="20" id="abi-gz-t4Q"/>
-                            <constraint firstItem="M2f-eg-DE3" firstAttribute="top" secondItem="iiY-Ah-ThM" secondAttribute="bottom" constant="10" id="ben-OD-tRY"/>
+                            <constraint firstItem="M2f-eg-DE3" firstAttribute="top" secondItem="iiY-Ah-ThM" secondAttribute="bottom" constant="3" id="ben-OD-tRY"/>
                             <constraint firstItem="S8L-KI-2hh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="c2n-34-Hh6"/>
                             <constraint firstItem="M2f-eg-DE3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dxc-JG-jco"/>
-                            <constraint firstItem="4ms-hf-96h" firstAttribute="top" secondItem="M2f-eg-DE3" secondAttribute="bottom" constant="35" id="mND-W8-THu"/>
-                            <constraint firstItem="iiY-Ah-ThM" firstAttribute="top" secondItem="S8L-KI-2hh" secondAttribute="bottom" constant="10" id="sEc-Rz-Mos"/>
+                            <constraint firstItem="4ms-hf-96h" firstAttribute="top" secondItem="M2f-eg-DE3" secondAttribute="bottom" constant="10" id="mND-W8-THu"/>
+                            <constraint firstItem="iiY-Ah-ThM" firstAttribute="top" secondItem="S8L-KI-2hh" secondAttribute="bottom" constant="3" id="sEc-Rz-Mos"/>
                             <constraint firstItem="4ms-hf-96h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="trg-f8-Qmc"/>
                         </constraints>
                     </view>

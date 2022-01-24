@@ -293,6 +293,8 @@ class MainScreenVC: UIViewController {
             firstCurrency.text = ""
             secondCurrency.text = ""
             resultLabel.text = ""
+            
+            // self.showAlert(withTitle: "Ошибка", withMessage: "Значения должны быть больше 0.")
         }
     }
     
