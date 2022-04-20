@@ -185,8 +185,7 @@ class CurrencyListVC: UITableViewController {
                 
             } catch let error {
                 print("Error serialization", error)
-            }
-            
+            } 
         }.resume()
     }
 }

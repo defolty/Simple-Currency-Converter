@@ -60,8 +60,7 @@ class MainScreenVC: UIViewController {
     
     var activeField = ""
     var checkReplace = false
-      
-    var successLabel: String?
+       
     var completeUpdateDate: String = "" {
         didSet {
             let today = Date()
