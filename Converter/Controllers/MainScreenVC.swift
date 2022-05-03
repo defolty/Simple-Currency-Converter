@@ -111,10 +111,8 @@ class MainScreenVC: UIViewController {
     @objc func dynamicTextFieldResult(textField: UITextField) {
         if textField == firstCurrency {
             activeField = "firstCurrency"
-            // secondCurrency.text = "" // требуется по тз, в моём случае нет смысла
         } else if textField == secondCurrency {
             activeField = "secondCurrency"
-            // firstCurrency.text = "" // требуется по тз, в моём случае нет смысла
         }
         
         checkReplace = false
@@ -223,7 +221,6 @@ class MainScreenVC: UIViewController {
                 } catch let error {
                     print("Error serialization", error)
                 }
-                
             }.resume()
             
         } else {
@@ -266,10 +263,9 @@ class MainScreenVC: UIViewController {
                         }
                     })
                     
-                } catch let error { 
+                } catch let error {
                     print("Error serialization", error.localizedDescription)
                 }
-                
             }.resume()
         }
     }
@@ -350,80 +346,4 @@ class MainScreenVC: UIViewController {
     }
 }
    
-
-/*
-private func setupGestures(buttons: UIButton) {
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
-    tapGesture.numberOfTapsRequired = 1
-    //buttons.addGestureRecognizer(tapGesture) // firstChangeCurrency.addGestureRecognizer(tapGesture)
-}
-
-@objc private func tapped() {
-    guard let currencyVC = storyboard?.instantiateViewController(withIdentifier: "CurrencyList") as? CurrencyListVC else { return }
-
-    currencyVC.selectedDelegate = self
-    //Haptics.impact(.light)
-
-    self.present(currencyVC, animated: true, completion: nil)
-}
- */
-
-//viewdidload
-//setupGestures(buttons: firstChangeCurrency)
-//setupGestures(buttons: secondChangeCurrency)
-//guard let currencyVC = storyboard?.instantiateViewController(withIdentifier: "CurrencyList") as? CurrencyListVC else { return }
-//currencyVC.selectedDelegate = self
  
-/*
-print(self.convertData?.baseCurrencyCode ?? "\nnothing 2",          // - USD
-     self.convertData?.baseCurrencyName ?? "\nnothing 3",          // - United States dollar
-     self.convertData?.amount ?? "\nnothing 4",                    // - 1.0
-     self.convertData?.updatedDate ?? "\nnothing 5",               // - 2022-01-17
-     self.convertData?.status ?? "\nnothing 6",                    // - ["RUB": Converter.Rates(currency_name: Optional("Russian ruble"),
-                                                                   //   rate: Optional("76.6664"),
-                                                                   //   rate_for_amount: Optional("76.6664"))]
-     self.convertData?.rates ?? "\nnothing 7")                     // - success
- */
-/*
-print(self.singleConvertData?.baseCurrencyCode ?? "\nnothing 8",       // - USD
-      self.singleConvertData?.baseCurrencyName ?? "\nnothing 9",       // - United States dollar
-      self.singleConvertData?.amount ?? "\nnothing 10",                // - 1.0
-      self.singleConvertData?.updatedDate ?? "\nnothing 11",           // - 2022-01-17
-      self.singleConvertData?.status ?? "\nnothing 12",                // - ["RUB": Converter.Rates(currency_name: ("Russian ruble"),
-                                                                       //   rate: ("76.6664"),
-                                                                       //   rate_for_amount: ("76.6664"))]
-      self.singleConvertData?.rates ?? "\nnothing 13")                 // - success
- */
-/*
- let rateForAmount = Double(self.singleConvertData?.rates?.first?.value.rate_for_amount ?? "nothing double 1")
- let singleConvertAmount = Double(self.singleConvertData?.amount ?? "nothing double 2")
- 
- print("\nrateForAmount -", rateForAmount ?? 0.0,                       // 7585.0
-       "\nsingleConvertAmount -", singleConvertAmount ?? 0.0,           // 100.0
-       "\nconvertRateForAmount -", convertRateForAmount ?? 0.0,         // 1.3184
-       "\nconvertDataAmount -", convertDataAmount ?? 0.0)               // 100.0
- */
-/*
-// обратная конвертация, можно выдернуть в отдельную функцию, засунуть в replace
-URLSession.shared.dataTask(with: selectedRequest as URLRequest) { (data, response, error) in
-    
-    guard let data = data else { return }
-    
-    do {
-        self.singleConvertData = try JSONDecoder().decode(SingleConvertCurrensy.self, from: data) ///оставить пока
-        self.singleConvertData?.amount = String(self.fromTextField) ///оставить пока
-         
-        DispatchQueue.main.async(execute: { [self]() -> Void in
-            
-            let convertRateForAmount = Double(self.convertData?.rates?.first?.value.rate_for_amount ?? "nothing double 3")
-            let convertDataAmount = Double(self.convertData?.amount ?? "nothing double 4")
-             
-            // let uniq = (convertRateForAmount ?? 0.0) * 100 / (convertDataAmount ?? 0.0) ///оставить пока
-        })
-        
-    } catch let error {
-        print("Error serialization 2", error.localizedDescription)
-    }
-    
-}.resume()
- */

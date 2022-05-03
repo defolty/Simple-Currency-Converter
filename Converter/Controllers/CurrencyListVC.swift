@@ -21,7 +21,7 @@ extension CurrencyListVC {
        if activeSearch {
            return filterKeys.count
        } else {
-           return onlyKeys?.count ?? 0 //currencyArray.count
+           return onlyKeys?.count ?? 0  
        }
    }
    
@@ -34,8 +34,6 @@ extension CurrencyListVC {
        } else {
            cell.textLabel?.text = onlyKeys?[indexPath.row]
            cell.detailTextLabel?.text = onlyValues?[indexPath.row]
-           // cell.textLabel?.text = Array(currencyArray!.keys)[indexPath.section]
-           // cell.detailTextLabel?.text = Array(currencyArray!.values)[indexPath.row]
        }
           
        return cell
@@ -64,8 +62,6 @@ extension CurrencyListVC {
        default:
            print("error 333")
        }
-       
-       //dismiss(animated: true, completion: nil)
    }
 }
 
