@@ -19,10 +19,10 @@ extension MainScreenVC: MyDataSendingDelegateProtocol {
          
         switch inputButton {
         case "firstButton":
-            firstChangeCurrency.setTitle(myString, for: .normal) // работает
+            firstChangeCurrency.setTitle(myString, for: .normal)
             fromValue = myString
         case "secondButton":
-            secondChangeCurrency.setTitle(myString, for: .normal) // работает
+            secondChangeCurrency.setTitle(myString, for: .normal)
             toValue = myString
         default:
             print("fucking shit")
@@ -148,22 +148,23 @@ class MainScreenVC: UIViewController {
             
             // для юзера
             let specURL = "\(Constants.firstPartUrl)\(fromValue)&to=\(toValue)&amount=\(fromTextField)&apiKey=\(Constants.apiKey)&format=json"
-            let request = NSMutableURLRequest(url: NSURL(string: specURL)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+            let request = NSMutableURLRequest(url: NSURL(string: specURL)! as URL,
+                                              cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
             
             // для получения обратной конвертации
             let reverse = "\(Constants.firstPartUrl)\(toValue)&to=\(fromValue)&amount=\(fromTextField)&apiKey=\(Constants.apiKey)&format=json"
-            let reverseRequest = NSMutableURLRequest(url: NSURL(string: reverse)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+            let reverseRequest = NSMutableURLRequest(url: NSURL(string: reverse)! as URL,
+                                                     cachePolicy: .useProtocolCachePolicy,
+                                                     timeoutInterval: 10.0)
             
             request.httpMethod = "GET"
             request.allHTTPHeaderFields = Constants.headers
             
             reverseRequest.httpMethod = "GET"
             reverseRequest.allHTTPHeaderFields = Constants.headers
-            
             differentRequest(selectedRequest: reverseRequest, textField: firstCurrency, activeForReplace: true)
-            
         } else {
-            
             fromTextField = Double(textField.text?.replacingOccurrences(of: ",", with: ".") ?? "textfield is empty") ?? 0.0
             
             // для юзера
@@ -195,13 +196,9 @@ class MainScreenVC: UIViewController {
     
     func differentRequest(selectedRequest: NSMutableURLRequest, textField: UITextField, activeForReplace: Bool) {
         if activeForReplace || checkReplace {
-             
             self.view.addSubview(activityIndicator)
-            
             URLSession.shared.dataTask(with: selectedRequest as URLRequest) { (data, response, error) in
-                
                 guard let data = data else { return }
-                
                 do {
                     self.convertData = try JSONDecoder().decode(ConvertCurrensy.self, from: data)
                     self.convertData?.amount = String(self.fromTextField)
@@ -217,52 +214,38 @@ class MainScreenVC: UIViewController {
                             
                             firstValueForReplace = roundDouble
                     })
-                    
                 } catch let error {
                     print("Error serialization", error)
                 }
             }.resume()
-            
         } else {
-             
             self.view.addSubview(activityIndicator)
-            
             URLSession.shared.dataTask(with: selectedRequest as URLRequest) { (data, response, error) in
-                
                 guard let data = data else { return }
-                
                 do {
                     self.convertData = try JSONDecoder().decode(ConvertCurrensy.self, from: data)
                     self.convertData?.amount = String(self.fromTextField)
                     self.completeUpdateDate = self.convertData?.updatedDate ?? "\nnothing 1"
                      
                     DispatchQueue.main.async(execute: { [self]() -> Void in
-                        
                         if textField == self.firstCurrency {
-                            
                             self.firstFieldNumber = self.convertData?.rates?.first?.value.rate_for_amount ?? "000"
                             let doubleFirstValue = Double(self.firstFieldNumber)
                             let roundDouble = floor(10000 * doubleFirstValue!) / 10000
                             self.activityIndicator.hide()
                             self.secondCurrency.text = String(roundDouble) //String(roundDouble)
-                            
                             firstValueForReplace = roundDouble
-                            
                         } else if textField == self.secondCurrency {
-                            
                             self.secondFieldNumber = self.convertData?.rates?.first?.value.rate_for_amount ?? "000"
                             let doubleSecondValue = Double(self.secondFieldNumber)
                             let roundDouble = round(10000 * doubleSecondValue!) / 10000
                             self.activityIndicator.hide()
-                            self.firstCurrency.text = String(roundDouble) 
-                            
+                            self.firstCurrency.text = String(roundDouble)
                             secondValueForReplace = roundDouble
-                            
                         } else {
                             print("no one textfield is active")
                         }
                     })
-                    
                 } catch let error {
                     print("Error serialization", error.localizedDescription)
                 }

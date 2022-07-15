@@ -16,8 +16,7 @@ protocol MyDataSendingDelegateProtocol: AnyObject {
  
 extension CurrencyListVC {
     
-   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 
        if activeSearch {
            return filterKeys.count
        } else {
@@ -70,30 +69,28 @@ extension CurrencyListVC {
 extension CurrencyListVC: UISearchBarDelegate {
      
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-         
         activeSearch = !activeSearch
         filterKeys = onlyKeys!
 
         if searchText.isEmpty == false {
             filterKeys = onlyKeys!.filter({ $0.contains(searchText) })
         }
- 
         mainTableView.reloadData()
     }
     
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-         
+    func searchBar(_ searchBar: UISearchBar,
+                   shouldChangeTextIn range: NSRange,
+                   replacementText text: String) -> Bool {
         do {
             let regex = try NSRegularExpression(pattern: ".*[^A-Z].*", options: [])
-            if regex.firstMatch(in: text, options: [], range: NSMakeRange(0, text.count)) != nil {
+            if regex.firstMatch(in: text,
+                                options: [],
+                                range: NSMakeRange(0, text.count)) != nil {
                 return false
             }
-        }
-        
-        catch {
+        } catch {
             print("error shouldChangeTextIn searchBar")
         }
-        
         return true
     }
 }
@@ -161,9 +158,7 @@ class CurrencyListVC: UITableViewController {
         self.view.addSubview(activityIndicator)
         
         URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
-            
             guard let data = data else { return }
-            
             do {
                 self.dataCurrencies = try JSONDecoder().decode(DataCurrency.self, from: data)
                 
